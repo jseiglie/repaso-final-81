@@ -2,25 +2,27 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { Formulario } from "../component/formulario.jsx";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
+						<div className="container bg-danger">
+				verificar si tienes usuarios, libros o libros, sino no podras hacer mucho. Crealos ya que las base de datos estan ancladas a los codespaces, los que creamos en clase, no estan aqui 
 			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://start.4geeksacademy.com/starters/react-flask">
-					Read documentation
-				</a>
-			</p>
+		<h2>REGISTER</h2>
+		<Formulario type={'register'}/>
+
+
+		<h2>LOGIN</h2>
+		<Formulario type={'login'}/>
+	
+
+		{store.books?.map(el=> <p key={el.id}>{el.title}</p>)}
+
+
 		</div>
 	);
 };
